@@ -1,0 +1,62 @@
+@prefix mscore:	<http://ontologies.ms.com/mscore/> .
+@prefix msrpc:	<http://ontologies.ms.com/msrpc/> .
+@prefix gist: <http://ontologies.semanticarts.com/gist/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix gen: <http://tools.semanticarts.com/generator/> .
+@prefix config: <http://tools.semanticarts.com/generator-config/> .
+@prefix data: <http://data.ms.com/msrpc/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+config:ControlShape
+	a sh:NodeShape ;
+	sh:targetClass msrpc:Control ;
+    gen:instanceScaling 1.0 ;
+	sh:property [     
+		sh:path msrpc:hasOwnerOrg ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+		sh:class mscore:MorganStanleyOrganization ;
+	] ;
+	sh:property [     
+		sh:path msrpc:partOf_c ;
+		sh:minCount 1 ;
+		sh:maxCount 3 ;
+		sh:class msrpc:BusinessProcessCategory ;
+	] ;
+	sh:property [
+		sh:path rdf:label ;
+		sh:datatype xsd:string ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed true ;
+	sh:ignoredProperties ( rdf:type ) .
+
+config:BusinessProcessCategoryShape
+	a sh:NodeShape ;
+	sh:targetClass msrpc:BusinessProcessCategory ;
+    gen:instanceScaling 1.0 ;
+	sh:property [
+		sh:path rdf:label ;
+		sh:datatype xsd:string ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed true ;
+	sh:ignoredProperties ( rdf:type ) .
+
+config:MorganStanleyOrganizationShape
+	a sh:NodeShape ;
+	sh:targetClass mscore:MorganStanleyOrganization ;
+    gen:instanceScaling 0.3 ;
+	sh:property [
+		sh:path rdf:label ;
+		sh:datatype xsd:string ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed true ;
+	sh:ignoredProperties ( rdf:type ) .
+
