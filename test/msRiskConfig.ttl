@@ -25,6 +25,30 @@ config:ControlShape
 		sh:maxCount 3 ;
 		sh:class msrpc:BusinessProcessCategory ;
 	] ;
+	sh:property [     
+		sh:path msrpc:hasFocus ;
+		# sh:minCount 0 ;
+		sh:maxCount 2 ;
+		sh:class msrpc:TechnologyAsset ;
+	] ;
+	sh:property [     
+		sh:path msrpc:directlyDependsUpon ;
+		# sh:minCount 0 ;
+		sh:maxCount 2 ;
+		sh:class msrpc:TechnologyAsset ;
+	] ;
+	sh:property [     
+		sh:path msrpc:hasFocus ;
+		# sh:minCount 0 ;
+		sh:maxCount 2 ;
+		sh:class msrpc:SoftwareAgent ;
+	] ;
+	sh:property [     
+		sh:path msrpc:directlyDependsUpon ;
+		# sh:minCount 0 ;
+		sh:maxCount 2 ;
+		sh:class msrpc:SoftwareAgent ;
+	] ;
 	sh:property [
 		sh:path rdf:label ;
 		sh:datatype xsd:string ;
@@ -51,6 +75,32 @@ config:MorganStanleyOrganizationShape
 	a sh:NodeShape ;
 	sh:targetClass mscore:MorganStanleyOrganization ;
     gen:instanceScaling 0.3 ;
+	sh:property [
+		sh:path rdf:label ;
+		sh:datatype xsd:string ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed true ;
+	sh:ignoredProperties ( rdf:type ) .
+
+config:TechnologyAssetShape
+	a sh:NodeShape ;
+	sh:targetClass msrpc:TechnologyAsset ;
+    gen:instanceScaling 0.1 ;
+	sh:property [
+		sh:path rdf:label ;
+		sh:datatype xsd:string ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed true ;
+	sh:ignoredProperties ( rdf:type ) .
+
+config:SoftwareAgentShape
+	a sh:NodeShape ;
+	sh:targetClass msrpc:SoftwareAgent ;
+    gen:instanceScaling 0.1 ;
 	sh:property [
 		sh:path rdf:label ;
 		sh:datatype xsd:string ;
